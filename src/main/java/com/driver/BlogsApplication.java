@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class BlogsApplication {
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception {
         SpringApplication.run(BlogsApplication.class, args);
     }
 }
