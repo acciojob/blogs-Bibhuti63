@@ -34,6 +34,7 @@ public class UserService {
 //        }
         user=userRepository3.findById(id).get();
         user.setPassword(password);
+        userRepository3.save(user);
         return user;
     }
 }
