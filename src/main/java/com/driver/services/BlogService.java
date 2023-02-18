@@ -21,13 +21,31 @@ public class BlogService {
     @Autowired
     UserRepository userRepository1;
 
-    public Blog createAndReturnBlog(Integer userId, String title, String content) {
+    public Blog createAndReturnBlog(Integer userId, String title, String content) throws Exception {
         //create a blog at the current time
+        User user;
+        if(!userRepository1.findById(userId).isPresent()){
+            throw new Exception();
+        }
+        user=userRepository1.findById(userId).get();
+        Blog blog=new Blog();
+
+        blog.setUser(user);
+        blog.setTitle(title);
+        blog.setContent(content);
+
+        //save the user and blog
+        userRepository1.save(user);
+        //blog will saved by cascading.
+        return blog;
 
     }
 
-    public void deleteBlog(int blogId){
+    public void deleteBlog(int blogId) throws Exception {
         //delete blog and corresponding images
-
+        if(!blogRepository1.findById(blogId).isPresent()){
+            throw new Exception();
+        }
+        blogRepository1.deleteById(blogId);
     }
 }
