@@ -13,11 +13,11 @@ public class ImageService {
     @Autowired
     ImageRepository imageRepository2;
 
-    public Image addImage(Integer blogId, String description, String dimensions) throws Exception {
+    public Image addImage(Integer blogId, String description, String dimensions)  {
         //add an image to the blog
-        if(!blogRepository2.findById(blogId).isPresent()){
-            throw new Exception();
-        }
+//        if(!blogRepository2.findById(blogId).isPresent()){
+//            throw new Exception();
+//        }
 
         Blog blog=blogRepository2.findById(blogId).get();
 
@@ -35,18 +35,18 @@ public class ImageService {
 
     }
 
-    public void deleteImage(Integer id) throws Exception {
-        if(!imageRepository2.findById(id).isPresent()){
-            throw new Exception();
-        }
+    public void deleteImage(Integer id)  {
+//        if(!imageRepository2.findById(id).isPresent()){
+//            throw new Exception();
+//        }
         imageRepository2.deleteById(id);
     }
 
-    public int countImagesInScreen(Integer id, String screenDimensions) throws Exception {
+    public int countImagesInScreen(Integer id, String screenDimensions)  {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
-        if(!imageRepository2.findById(id).isPresent()){
-            throw new Exception();
-        }
+//        if(!imageRepository2.findById(id).isPresent()){
+//            throw new Exception();
+//        }
 
         String arr[]=screenDimensions.split("X");
         int sL=Integer.parseInt(arr[0]);
